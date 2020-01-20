@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  items = Array.from({length: 100}).map((_, i) => `Item #${i}`);
   titulo: any;
   descripcion: any;
   html: any;
 
-  constructor() {
+  constructor(private router: Router, private sData: DataService) {
     const time = new Date();
     this.titulo = 'Eduard Fabián';
     this.descripcion = 'Página de pruebas de integración y despliegue.';
@@ -21,4 +24,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  next() {
+    this.sData.setHola();
+    setTimeout(() => {
+      this.router.navigate(['menu']);
+    }, 1000);
+  }
 }
