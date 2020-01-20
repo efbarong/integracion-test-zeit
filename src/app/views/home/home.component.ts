@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private sData: DataService) {
     const time = new Date();
-    this.titulo = 'Eduard Fabián';
+    this.titulo = 'Edward Fabián Barón';
     this.descripcion = 'Página de pruebas de integración y despliegue.';
     this.html = `<br><b>${time}</b>`;
   }
